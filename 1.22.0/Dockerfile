@@ -129,8 +129,8 @@ RUN set -x && \
       libnghttp2-14 \
       libexpat1 \
       libprotobuf-c1 && \
-    groupadd _unbound && \
-    useradd -g _unbound -s /dev/null -d /etc _unbound && \
+    groupadd _unbound -g 996 && \
+    useradd -g _unbound -u 2000 -s /dev/null -d /etc _unbound && \
     apt-get purge -y --auto-remove \
       $build_deps && \
     rm -rf \
