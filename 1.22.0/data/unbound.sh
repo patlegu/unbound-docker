@@ -31,13 +31,13 @@ else
     slabs=4
 fi
 
-if [ ! -f /opt/unbound/etc/unbound/unbound.conf ]; then
+if [ ! -f /opt/unbound/etc/unbound/conf/unbound.conf ]; then
     sed \
         -e "s/@MSG_CACHE_SIZE@/${msg_cache_size}/" \
         -e "s/@RR_CACHE_SIZE@/${rr_cache_size}/" \
         -e "s/@THREADS@/${threads}/" \
         -e "s/@SLABS@/${slabs}/" \
-        > /opt/unbound/etc/unbound/unbound.conf << EOT
+        > /opt/unbound/etc/unbound/conf/unbound.conf << EOT
 server:
     ###########################################################################
     # BASIC SETTINGS
@@ -383,7 +383,7 @@ server:
     # FORWARD ZONE
     ###########################################################################
 
-    include: /opt/unbound/etc/unbound/forward-records.conf
+    include: /opt/unbound/etc/unbound/conf/forward-records.conf
 
 
 remote-control:
@@ -398,4 +398,4 @@ mkdir -p -m 700 /opt/unbound/etc/unbound/var && \
 chown _unbound:_unbound /opt/unbound/etc/unbound/var && \
 /opt/unbound/sbin/unbound-anchor -a /opt/unbound/etc/unbound/var/root.key
 
-exec /opt/unbound/sbin/unbound -d -c /opt/unbound/etc/unbound/unbound.conf
+exec /opt/unbound/sbin/unbound -d -c /opt/unbound/etc/unbound/conf/unbound.conf
