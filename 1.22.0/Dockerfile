@@ -99,7 +99,7 @@ RUN build_deps="curl gcc libc-dev libevent-dev libexpat1-dev libnghttp2-dev make
         --enable-event-api \
         --enable-subnet && \
     make install && \
-    mv /opt/unbound/etc/unbound/unbound.conf /opt/unbound/etc/unbound/unbound.conf.example && \
+    mv /opt/unbound/etc/unbound/conf/unbound.conf /opt/unbound/etc/unbound/conf/unbound.conf.example && \
     apt-get purge -y --auto-remove \
       $build_deps && \
     rm -rf \
